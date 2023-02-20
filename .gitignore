@@ -1,0 +1,10 @@
+#/frontend
+.idea
+*.log
+wp-content
+!wp-content/plugins/backend
+wp-content/plugins/backend/frontend
+wp-*
+xmlrpc.php
+readme.html
+license.txt
