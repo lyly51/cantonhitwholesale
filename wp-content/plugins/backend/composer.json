@@ -1,0 +1,14 @@
+{
+  "name": "albert/backend",
+  "authors": [
+    {
+      "name": "AlbertTangJ",
+      "email": "aberttang@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CTHWP\\Api\\": "api/"
+    }
+  }
+}

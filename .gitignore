@@ -1,10 +1,15 @@
 #/frontend
 .idea
 *.log
-wp-content
+wp-includes/
+wp-**.php
+wp-admin/
+!wp-content
+wp-content/*
+!wp-content/plugins
+wp-content/plugins/*
 !wp-content/plugins/backend
 wp-content/plugins/backend/frontend
-wp-*
 xmlrpc.php
 readme.html
 license.txt
