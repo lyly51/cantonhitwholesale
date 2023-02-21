@@ -69,22 +69,6 @@ class InstallAction
 
     }
 
-    function new_modify_user_table_row($val, $column_name, $user_id)
-    {
-        print_r($column_name).'<br />';
-        if ($column_name == 'newsletter') {
-            return get_user_meta($user_id, 'nyhetsbrev', true);
-        }
-        return $val;
-    }
-
-    function my_handle_row_actions($item, $column_name, $primary)
-    {
-        print_r($item);
-        print_r($column_name);
-        print_r($primary);
-        exit();
-    }
 
     function register_users_move_to_bulk_actions($bulk_actions)
     {
