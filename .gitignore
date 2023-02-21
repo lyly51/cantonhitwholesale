@@ -1,0 +1,14 @@
+.idea
+*.log
+wp-includes/
+wp-**.php
+wp-admin/
+!wp-content
+wp-content/*
+!wp-content/plugins
+wp-content/plugins/*
+!wp-content/plugins/backend
+wp-content/plugins/backend/frontend
+xmlrpc.php
+readme.html
+license.txt
