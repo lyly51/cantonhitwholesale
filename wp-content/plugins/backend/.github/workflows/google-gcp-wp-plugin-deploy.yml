@@ -32,6 +32,7 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY }}'
+      # Deploy to GCP
       - name: Deploy
         run: |
           gcloud compute ssh aberttang@"$GCE_INSTANCE_NAME" --zone "$GCE_INSTANCE_ZONE" --project "$PROJECT_ID" \
