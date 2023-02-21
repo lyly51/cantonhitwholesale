@@ -224,7 +224,7 @@ function handle_woocommerce_before_checkout_form_action($checkout)
         $current_user_id = get_current_user_id();
         if ($current_user_id != 0) {
             $seller_code = get_user_meta($current_user_id, 'seller_code');
-            echo '<div style="display: block;">';
+            echo '<div style="display: none;">';
             woocommerce_form_field('seller_code', array(
                 'type' => 'text',
                 'default' => $seller_code[0],
