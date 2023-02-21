@@ -37,18 +37,17 @@ class SellersController extends WP_REST_Controller
                     'callback' => [$this, 'get_sellers'],
                     'permission_callback' => [$this, 'get_sellers_permissions_check'],
                     'args' => []
-                ],
-                [
+                ], [
                     'methods' => WP_REST_Server::CREATABLE,
                     'callback' => [$this, 'create_seller'],
                     'permission_callback' => [$this, 'get_sellers_permissions_check'],
                     'args' => []
-                ], [
-                'methods' => "POST",
-                'callback' => [$this, 'delete_seller'],
-                'permission_callback' => [$this, 'get_sellers_permissions_check'],
-                'args' => []
-            ]
+                 ], [
+                    'methods' => "POST",
+                    'callback' => [$this, 'delete_seller'],
+                    'permission_callback' => [$this, 'get_sellers_permissions_check'],
+                    'args' => []
+                ]
             ]
         );
 
@@ -106,17 +105,17 @@ class SellersController extends WP_REST_Controller
         $target_code = sanitize_text_field($bodyObject->target_code);
         $customers = $bodyObject->customers;
         // 先更新客户
-        if (!isset($from_code)||$from_code=="") {
-            return rest_ensure_response(["status" => 1, "message" => "先选择要转移的业务员"]);
-        }
-        if (empty($customers)){
+//        if (!isset($from_code)||$from_code=="") {
+//            return rest_ensure_response(["status" => 1, "message" => "先选择要转移的业务员"]);
+//        }
+        if (empty($customers)) {
             return rest_ensure_response(["status" => 1, "message" => "先选择客户"]);
         }
-        if (!isset($target_code)||$target_code=="") {
+        if (!isset($target_code) || $target_code == "") {
             return rest_ensure_response(["status" => 1, "message" => "先选择目标业务员"]);
         }
         foreach ($customers as $customerid) {
-            update_user_meta($customerid,'seller_code', $target_code);
+            update_user_meta($customerid, 'seller_code', $target_code);
         }
 
         $query = new WC_Order_Query(array(
@@ -163,7 +162,7 @@ class SellersController extends WP_REST_Controller
     {
         global $wpdb;
         $code = $data['code'];
-        $arg = array('number'=>-1,"role" => 'customer');
+        $arg = array('number' => -1, "role" => 'customer');
         if (isset($code)) {
             $arg['meta_key'] = 'seller_code';
             $arg['meta_value'] = $code;
@@ -188,9 +187,9 @@ class SellersController extends WP_REST_Controller
             }
             $have = false;
             foreach ($list as $have_user) {
-               if ( $have_user['id'] == $user['id']) {
-                   $have = true;
-               }
+                if ($have_user['id'] == $user['id']) {
+                    $have = true;
+                }
             }
             if (!$have) {
                 $list[] = $user;
