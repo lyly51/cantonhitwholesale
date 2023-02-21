@@ -116,7 +116,6 @@ class InstallAction
             $arg = array('number' => -1, 'role' => 'seller');
             $sellers = get_users($arg);
             ?>
-            <!--            <form method="GET">-->
             <input type="hidden" name="action" value="moveto">
             <select name="to_seller">
                 <option value="0">请指定业务员</option>
@@ -126,7 +125,6 @@ class InstallAction
                 <?php } ?>
             </select>
             <input type="submit" class="button" value="Move To"/>
-            <!--            </form>-->
             <?php
 
         }
@@ -223,8 +221,8 @@ class InstallAction
 
     function add_sellers_code_field_to_checkout_from($checkout)
     {
-        if (is_login()) {
-            $current_user_id = get_current_user_id();
+        $current_user_id = get_current_user_id();
+        if ($current_user_id != 0) {
             $seller_code = get_user_meta($current_user_id, 'seller_code');
             echo '<div style="display: block;">';
             woocommerce_form_field('seller_code', array(
