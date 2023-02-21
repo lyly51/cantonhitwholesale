@@ -1,0 +1,38 @@
+name: Build and Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  RUN_REGION: us-central1
+  VERSION : beta
+  GCE_INSTANCE_NAME: instance-1 #server name
+  GCE_INSTANCE_ZONE: us-central1-a #server localtion
+
+jobs:
+  setup-build-deploy:
+    name: Setup, Build, and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # Set up GCC
+      - name: Set up GCC
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: latest
+          platform: x64
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Setup gcloud CLI
+      - name: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+      - name: Deploy
+        run: |
+          gcloud compute ssh aberttang@"$GCE_INSTANCE_NAME" --zone "$GCE_INSTANCE_ZONE" --project "$PROJECT_ID" \
+            --command="cd ~/public_html && git pull origin main"
