@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   RUN_REGION: us-central1
   VERSION : beta
-  GCE_INSTANCE_NAME: instance-1 #server name
+  GCE_INSTANCE_NAME: shop-cantonhintwholesale #server name
   GCE_INSTANCE_ZONE: us-central1-a #server localtion
 
 jobs:
