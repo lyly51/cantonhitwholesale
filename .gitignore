@@ -12,3 +12,4 @@ wp-content/plugins/backend/frontend
 xmlrpc.php
 readme.html
 license.txt
+.DS_Store
