@@ -8,9 +8,9 @@ use WC_Order_Query;
 use WC_Product;
 use WP_HTTP_Response;
 use WP_REST_Controller;
-use WP_REST_Request;
 use WP_REST_Server;
 use WP_User;
+use WP_REST_Request;
 
 class SellersController extends WP_REST_Controller
 {

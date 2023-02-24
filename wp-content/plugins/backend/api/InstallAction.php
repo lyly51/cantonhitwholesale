@@ -186,15 +186,15 @@ class InstallAction
         if ('edit.php' === $pagenow && 'shop_order' === $post_type) {
             ?>
             <select name="coupon">
-                <option value="0">All coupons</option>
-            </select>
-            <input type="button" class="button" value="Move To"/>
-            <?php
-        }
-    }
+	<option value="0">All coupons</option>
+    </select>
+    <input type="button" class="button" value="Move To"/>
+    <?php
+}
+}
 
-    function handle_woocommerce_before_checkout_form_action($checkout)
-    {
+function handle_woocommerce_before_checkout_form_action($checkout)
+{
         $userid = get_current_user_id();
         if ($userid == 0) {
             wp_redirect("/my-account-2");
