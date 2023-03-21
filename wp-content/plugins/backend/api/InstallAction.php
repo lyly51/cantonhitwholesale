@@ -269,10 +269,10 @@ function handle_woocommerce_before_checkout_form_action($checkout)
         // This condition allows us to make sure that we're modifying a query that fires on the wp-admin/edit.php?post_type=shop_order page
         if ('edit.php' === $pagenow && 'shop_order' === $typenow) {
             if (in_array('seller', $roles)) {
-                $where .= " AND wp_posts.ID IN ('" . implode(",", $order_ids) . "')";
+                $where .= " AND wp_posts.ID IN ('" . implode("','", $order_ids) . "')";
             }
         }
-        print_r($where);
+//        print_r($where);
         return $where;
     }
 
