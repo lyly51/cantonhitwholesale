@@ -266,7 +266,7 @@ class SellersController extends WP_REST_Controller
 
             foreach ($products as $product_item) {
                 $p_item = new WC_Order_Item_Product($product_item);
-                if($p_item) {
+                if($p_item->get_product()){
                     $product = new WC_Product($p_item->get_product());
                     $showProduct['name'] = $product->get_name();
                     $showProduct['sku'] = $product->get_sku();
